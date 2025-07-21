@@ -40,7 +40,7 @@ class Perceptron:
             for i in range(X.shape[0]):
                 y_pred = self.predict(X[i:i+1])
                 update = self.learning_rate * (y[i] - y_pred)
-                self.weights += update * np.insert(X[i], 0, 1)
+                self.weights += update * np.insert(X[i], 0, 1) * 0.5
         ### END CODE HERE ###
 
 def generate_data(seed=0, samples=200, noise=1.5):
