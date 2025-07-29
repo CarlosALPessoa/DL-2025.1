@@ -6,7 +6,7 @@ from sklearn.model_selection import train_test_split
 # matplotlib.use('TkAgg') 
  
 class Perceptron:
-    def __init__(self, seed=0, input_size=2, learning_rate=0.01, epochs=100):
+    def __init__(self, seed=0, input_size=2, learning_rate=0.1, epochs=100):
         self.seed = seed
         self.learning_rate = learning_rate
         self.epochs = epochs
@@ -17,7 +17,7 @@ class Perceptron:
         rng = np.random.default_rng(self.seed)
         ### START CODE HERE ###
         ### TODO: Initialize weights with small Gaussian noise using rng.normal
-        self.weights = rng.normal(size=(self.input_size + 1))
+        self.weights = rng.normal(-1, 0.01, size=(self.input_size + 1))
         ### END CODE HERE ###
 
     def activation(self, x):
@@ -36,11 +36,16 @@ class Perceptron:
     def fit(self, X, y):
         ### START CODE HERE ###
         ### TODO: Implement the perceptron learning rule using weight updates
+        X_bias = np.insert(X, 0, 1, axis=1)
+
         for epoch in range(self.epochs):
-            for i in range(X.shape[0]):
-                y_pred = self.predict(X[i:i+1])
-                update = self.learning_rate * (y[i] - y_pred)
-                self.weights += update * np.insert(X[i], 0, 1) * 0.5
+            for x_i, y_true in zip(X_bias, y):
+                dot_product = np.dot(x_i, self.weights)
+                y_pred = 1 if dot_product >= 0 else -1
+
+                if y_pred != y_true:
+                    update = self.learning_rate * (y_true - y_pred) * x_i
+                    self.weights += update
         ### END CODE HERE ###
 
 def generate_data(seed=0, samples=200, noise=1.5):
