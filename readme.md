@@ -15,5 +15,4 @@ Cada pasta corresponde a uma tarefa prática entregue ao longo do semestre.
 
 1. Clone este repositório:
    ```bash
-   git clone https://github.com/CarlosALPessoa/DL-2025.1.git
-   cd DL-2025.1
+   git clone https://github.com/CarlosALPessoa/DL-2025-1.git
