@@ -15,7 +15,7 @@ class Perceptron:
         rng = np.random.default_rng(self.seed)
         ### START CODE HERE ###
         ### TODO: Initialize weights with small Gaussian noise using rng.normal
-        self.weights = rng.normal(-1, 0.01, size=(self.input_size + 1))
+        self.weights = rng.normal(loc=0.0, scale=0.01, size=(self.input_size + 1))
         ### END CODE HERE ###
 
     def activation(self, x):
