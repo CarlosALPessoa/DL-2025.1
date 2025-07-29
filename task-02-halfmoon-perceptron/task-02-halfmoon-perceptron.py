@@ -1,7 +1,7 @@
 #%%
 import numpy as np
 import numpy as np
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt # type: ignore
 from sklearn.model_selection import train_test_split
 
 #%%
@@ -17,7 +17,7 @@ class Perceptron:
         rng = np.random.default_rng(self.seed)
         ### START CODE HERE ###
         ### TODO: Initialize weights with small Gaussian noise using rng.normal
-        self.weights = rng.normal(0, 0.01, size=(self.input_size + 1))
+        self.weights = rng.normal(-1, 0.01, size=(self.input_size + 1))
         ### END CODE HERE ###
 
     def activation(self, x):
