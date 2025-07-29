@@ -1,10 +1,8 @@
-#%%
 import numpy as np
 import numpy as np
 import matplotlib.pyplot as plt # type: ignore
 from sklearn.model_selection import train_test_split
 
-#%%
 class Perceptron:
     def __init__(self, seed=0, input_size=2, learning_rate=0.001, epochs=100):
         self.seed = seed
